@@ -4,7 +4,9 @@ import java.math.BigInteger;
 
 public class Parallel {
 
+	// Demalu kajettiligin baskarushy.
 	static boolean sleepNeeded = true;
+
 	static BigInteger squares [] = new BigInteger[2];
 	static BigInteger x = new BigInteger("40").pow(1900000);
 
@@ -76,9 +78,8 @@ public class Parallel {
 	}
 
 	public static void main (String [] args) throws Exception {
-		if (java.util.Arrays.asList(args).contains("demalma")) {
-			sleepNeeded = false;
-		}
+		sleepNeeded = !java.util.Arrays.asList(args).contains("demalma");
+
 		System.out.println("Java JDK " + System.getProperty("java.version"));
 		System.out.println("\tTizbektei esepteuge "+sequential() +" sekund ketti");
 		System.out.println("\tParallel esepteuge "+parallel()+ " sekund ketti");

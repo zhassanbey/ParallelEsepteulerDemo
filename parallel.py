@@ -2,12 +2,16 @@ import sys
 import time
 import threading
 
+# Demalu kajettiligin baskarushy.
+SLEEP_NEEDED = True
+
 x = 40**1900000
 
 squares = [-1, -1]
 
 def _sqr(z, i):
-	time.sleep(2) # <- adeyi 2 sekund uiktatamyz.
+	if SLEEP_NEEDED:
+		time.sleep(2) # <- adeyi 2 sekund uiktatamyz.
 	squares[i] = z**2
 
 def _plus(f, b):
@@ -44,6 +48,7 @@ def parallel() -> float:
 	return time.time() - start_time
 
 if __name__ == '__main__':
+	SLEEP_NEEDED = 'demalma' not in sys.argv
 	print(f'Python {sys.version_info.major}.{sys.version_info.minor}.{sys.version_info.micro}')
 	print(f'\tTizbektei esepteuge {sequential()} sekund ketti')
 	print(f'\tParallel esepteuge {parallel()} sekund ketti')
