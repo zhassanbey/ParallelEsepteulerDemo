@@ -5,7 +5,9 @@ import threading
 # Demalu kajettiligin baskarushy.
 SLEEP_NEEDED = True
 
+# Sol eki sannyn kvardarttarynyn kosyndysyn esepteu kerek, yagni x**2 + y**2 ornegnin.
 x = 40**1900000
+y = 43**1899999
 
 squares = [-1, -1]
 
@@ -22,7 +24,7 @@ def sequential() -> float:
 	
 	# Kvardarttardy brinien son birin tizbektei eseptep alamyz.
 	_sqr(x, 0)
-	_sqr(x, 1)
+	_sqr(y, 1)
 
 	# Sosyn kosyndyny esepteimiz.
 	_plus(squares[0], squares[1])
@@ -35,7 +37,7 @@ def parallel() -> float:
 	# Eki kvardartty eki jeke threadtin ishinde esepteimiz.
 	t1 = threading.Thread(target=_sqr, args=(x, 0,))
 	t1.start()
-	t2 = threading.Thread(target=_sqr, args=(x, 1,))
+	t2 = threading.Thread(target=_sqr, args=(y, 1,))
 	t2.start()
 	
 	# Eki threadting de bitkenin kutemiz.

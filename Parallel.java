@@ -8,7 +8,10 @@ public class Parallel {
 	static boolean sleepNeeded = true;
 
 	static BigInteger squares [] = new BigInteger[2];
+
+	// Sol eki sannyn kvardrattarynyn kosyndysyn, yagni x**2 + y**2 tabu kerek.
 	static BigInteger x = new BigInteger("40").pow(1900000);
+	static BigInteger y = new BigInteger("43").pow(1899999);
 
 	static void sqr(BigInteger z, int i) throws Exception {
 		if (sleepNeeded) {
@@ -26,7 +29,7 @@ public class Parallel {
 		
 		// Kvardarttardy brinien son birin tizbektei eseptep alamyz.
 		sqr(x, 0);
-		sqr(x, 1);
+		sqr(y, 1);
 
 		// Sosyn kosyndyny esepteimiz.
 		plus(squares[0], squares[1]);
@@ -57,7 +60,7 @@ public class Parallel {
 			@Override
 			public void run() {
 				try {
-					sqr(x, 1);
+					sqr(y, 1);
 				} catch (Exception e) {
 					e.printStackTrace();		
 				}
